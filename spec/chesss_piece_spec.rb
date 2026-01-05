@@ -35,5 +35,24 @@ describe ChessPiece do
         expect(black_piece.character).to eq("\u265F")
       end
     end
+    context 'rook' do
+      let(:role) { String.new('rook') }
+      let(:white) { String.new('white') }
+      let(:black) { String.new('black') }
+      subject(:white_piece) { described_class.new(role, white) }
+      subject(:black_piece) { described_class.new(role, black) }
+      it 'has role attr' do
+        expect(white_piece.role).to eq(role)
+      end
+      it 'has team attr' do
+        expect(white_piece.team).to eq(white)
+      end
+      it 'has white character attr' do
+        expect(white_piece.character).to eq("\u2656")
+      end
+      it 'has black character attr' do
+        expect(black_piece.character).to eq("\u265C")
+      end
+    end
   end
 end
