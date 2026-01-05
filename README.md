@@ -57,6 +57,12 @@ ChessBoard
       #updates an instance varialbe that keeps track on whos turn
     move_piece(new,cur)
       #moves a piece in the board
+
+ChessPiece
+  #create an instance of of chess pieces. 
+  #initialize with a name of the piece to to be made
+  #APIs
+    Create_piece(piece_name)
     
 
 
