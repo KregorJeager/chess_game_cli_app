@@ -60,9 +60,9 @@ ChessBoard
 
 ChessPiece
   #create an instance of of chess pieces. 
-  #initialize with a name of the piece to to be made
+  #initialize with a name and team of the piece to to be made
   #APIs
-    Create_piece(piece_name)
+    Create_piece(piece_name,piece_team)
     
 
 
