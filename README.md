@@ -6,46 +6,48 @@ Organization Plan
 
 Main_menu
   #will either start a new game or load saved games
+  #it does so by creating ChessBoard.new or loading saved instanced of ChessBoard
   #APIs 
     new_game 
-      # start game round with all pieces in default
-    load_game(load_game_name)
-      # (input) a hash with whos turn and 2d array of the chess board
-      #will start game round with the given board and who's turn it is to move
+      #create an instance of GameRound and init with ChessBoard.new
+    load_game(saved_ChessBoard_instance)
+      #create an instance of GameRound and init with ChessBoard input
     list_load_game
       #list out all loaded game name
 
 GameRound
-  #Plays the game
-  #MainMenu will give instance of ChessBoard that it will manipulate
-  #handle:
-    #prints board
-    #gets player input
-    #validate if move is valid
-    #move pieces
-    #player taking turn moving
-    #saves game
+  #manipulates the ChessBoard input using the APIs of the board
+  #Play the game until player chooses to save or quit.
+  #announg winner when a player won and return game to MainMenu
   #APIs
-    initialize
-      #
     game_loop
-      #loops game until player choose to save or a checkmate
-    print_board
-      #print a basic chess_board
-    get_player_input
-      #gets player input thru #gets and format it for use
-      #save_game
-      #saves game
-    move_piece
-      #move a piece by calling move_piece in chess_board
-    Valid?
-      #determines if the move is valid
-      #check? path_clear? peice can move as such?
-    #save_game
-      access the save game DIR and save the ChessBoard instance
+      #loops the game letting players take turn moving
+    player_input
+      #returns an array of coordinate for next move or string of command
+      #will be used for saving or quiting the game
+    make_move(cur_pos, new_pos)
+      #calls ChessBoard API to update board that a move has been made
+      #calls ChessBoard API to changeplayer turn
+    quit
+      #stop the game and ruturn to MainMenu
+    save
+      #save ChessBoard instance to load game DIR
+      #stop game and return to MainMenu or call quit
+    valid?(cur,new,board)
+      #uses chess_rule modules and return true if the a move is valid
+      #determine if:
+        a piece is allowed to make the given moved
+        if check: the moves removes checkmate status
+    check_mate?
+      #uses chess_rule modules and return true if there is a move that can save the king
+
+      
 
 ChessBoard
   #
+
+
+
 
 
       
