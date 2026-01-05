@@ -11,7 +11,7 @@ class ChessPiece
   end
 
   def get_character(role, team)
-    char = characters.select { |k, v| role == k }
+    char = characters.select { |k| role == k }
     team == 'white' ? char[role].at(0) : char[role].at(1)
   end
 
