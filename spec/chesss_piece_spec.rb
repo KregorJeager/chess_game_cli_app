@@ -11,6 +11,9 @@ describe ChessPiece do
       it 'has role attr' do
         expect(pawn.role).to eq(role)
       end
+      it 'has team attr' do
+        expect(pawn.team).to eq(team)
+      end
     end
   end
 end
