@@ -44,7 +44,21 @@ GameRound
       
 
 ChessBoard
-  #
+  #Will contain the board array itself
+  #has instance variable for whos turn it is to play @turn with accesr
+  #has instance variable for board @board with accesr  
+  #init chess pieces if not yet init
+  #APIs
+    init_chesspiece(piece_name, pos)
+      #create a class_instance of a piece and place in the given position
+    set_board_to_default
+      #set pieces in thier initial pos
+    update_turn
+      #updates an instance varialbe that keeps track on whos turn
+    move_piece(new,cur)
+      #moves a piece in the board
+    
+
 
 
 
