@@ -8,15 +8,19 @@ describe ChessPiece do
       let(:role) { String.new('pawn') }
       let(:white) { String.new('white') }
       let(:black) { String.new('black') }
-      subject(:pawn) { described_class.new(role, white) }
+      subject(:white_piece) { described_class.new(role, white) }
+      subject(:black_piece) { described_class.new(role, black) }
       it 'has role attr' do
-        expect(pawn.role).to eq(role)
+        expect(white_piece.role).to eq(role)
       end
       it 'has team attr' do
-        expect(pawn.team).to eq(white)
+        expect(white_piece.team).to eq(white)
       end
       it 'has white character attr' do
-        expect(pawn.character).to eq("\u2659")
+        expect(white_piece.character).to eq("\u2659")
+      end
+      it 'has black character attr' do
+        expect(black_piece.character).to eq("\u265F")
       end
     end
   end
