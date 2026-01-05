@@ -4,6 +4,18 @@ require './lib/chess_piece'
 
 describe ChessPiece do
   describe '#initialize' do
+    context 'attributes can only be read' do
+      subject(:piece) { described_class.new('pawn', 'white') }
+      it 'does not allow role attr to change' do
+        expect { piece.role = 'bishop' }.to raise_error(an_instance_of(NoMethodError))
+      end
+      it 'does not allow team attr to change' do
+        expect { piece.team = 'white' }.to raise_error(an_instance_of(NoMethodError))
+      end
+      it 'does not allow character attr to change' do
+        expect { piece.character = 'bishop' }.to raise_error(an_instance_of(NoMethodError))
+      end
+    end
     context 'pawn' do
       let(:role) { String.new('pawn') }
       let(:white) { String.new('white') }
