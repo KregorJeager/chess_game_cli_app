@@ -12,10 +12,10 @@ describe ChessBoard do
       expect { board.board = [1] }.to raise_error(an_instance_of(NoMethodError))
     end
     it 'has @turn' do
-      expect { board.turn }.not_to raise_error(an_instance_of(NoMethodError))
+      expect(board.turn).to eq('white')
     end
     it '@turn has attr accesor' do
-      expect { board.turn = 'black' }.not_to raise_error(an_instance_of(NoMethodError))
+      expect { board.turn = 'black' }.to change { board.turn }.to('black')
     end
   end
 end
