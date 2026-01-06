@@ -6,7 +6,7 @@ class ChessBoard
   attr_accessor :turn
 
   def initialize
-    @board = []
+    @board = Array.new(8) { Array.new(8) { nil } }
     @turn = 'white'
   end
 end
