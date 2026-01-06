@@ -20,15 +20,6 @@ describe ChessBoard do
   end
 
   describe '#initialize' do
-    matcher :be_a_nil_8x8_array do
-      match do |brd|
-        (0..7).each do |i|
-          (0..7).each do |j|
-            brd[i][j].nil?
-          end
-        end
-      end
-    end
     it 'set @board to 8x8 2d array with all values nil' do
       expect(board.board).to be_a_nil_8x8_array
     end
@@ -49,6 +40,28 @@ describe ChessBoard do
         piece = board.board[0][0]
         expect(piece.team).to eq('white')
       end
+    end
+  end
+
+  describe '#set_board_to_default' do
+  end
+  matcher :be_a_nil_8x8_array do
+    match do |brd|
+      (0..7).each do |i|
+        (0..7).each do |j|
+          brd[i][j].nil?
+        end
+      end
+    end
+  end
+  matcher :be_all_white_pawn do
+    math do |array|
+      array.all? { |piece| piece.role == 'pawn' && piece.team == 'white' }
+    end
+  end
+  matcher :be_all_black_pawn do
+    math do |array|
+      array.all? { |piece| piece.role == 'pawn' && piece.team == 'black' }
     end
   end
 end
