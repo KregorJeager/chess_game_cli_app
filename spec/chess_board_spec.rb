@@ -45,6 +45,10 @@ describe ChessBoard do
         piece = board.board[0][0]
         expect(piece.role).to eq('rook')
       end
+      it 'team = white' do
+        piece = board.board[0][0]
+        expect(piece.team).to eq('white')
+      end
     end
   end
 end
