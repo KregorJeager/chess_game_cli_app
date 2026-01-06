@@ -47,9 +47,10 @@ ChessBoard
   #Will contain the board array itself
   #has instance variable for whos turn it is to play @turn with accesr
   #has instance variable for board @board with accesr  
+  #creates an empty 8x8 2d array at initialize
   #init chess pieces if not yet init
   #APIs
-    init_chesspiece(piece_name, pos)
+    init_chesspiece(piece_name, pos, team)
       #create a class_instance of a piece and place in the given position
     set_board_to_default
       #set pieces in thier initial pos
