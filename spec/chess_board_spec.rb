@@ -54,6 +54,12 @@ describe ChessBoard do
       it 'all black pawn are in place' do
         expect(board.board[6]).to be_all_black_pawn
       end
+      it 'all white back ranker at place' do
+        expect(board.board[0]).to be_all_white
+      end
+      it 'all black back ranker at place' do
+        expect(board.board[7]).to be_all_black
+      end
     end
   end
   matcher :be_a_nil_8x8_array do
