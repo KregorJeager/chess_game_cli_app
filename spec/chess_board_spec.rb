@@ -8,5 +8,8 @@ describe ChessBoard do
     it 'has @board' do
       expect { board.board }.not_to raise_error
     end
+    it '@board is read only' do
+      expect { board.board = [1] }.to raise_error(an_instance_of(NoMethodError))
+    end
   end
 end
