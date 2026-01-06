@@ -34,7 +34,7 @@ describe ChessBoard do
     end
   end
   describe '#init_chesspiece' do
-    context 'when a rook is created and placed in 0,0' do
+    context 'when a white rook is created and placed in 0,0' do
       before do
         position = [0, 0]
         role = 'rook'
