@@ -33,4 +33,18 @@ describe ChessBoard do
       expect(board.board).to be_a_nil_8x8_array
     end
   end
+  describe '#init_chesspiece' do
+    context 'when a rook is created and placed in 0,0' do
+      before do
+        position = [0, 0]
+        role = 'rook'
+        team = 'white'
+        board.init_chesspiece(role, position, team)
+      end
+      it 'role = rook' do
+        piece = board.board[0][0]
+        expect(piece.role).to eq('rook')
+      end
+    end
+  end
 end
