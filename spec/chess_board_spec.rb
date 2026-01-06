@@ -51,6 +51,9 @@ describe ChessBoard do
       it 'all white pawn are in place' do
         expect(board.board[1]).to be_all_white_pawn
       end
+      it 'all black pawn are in place' do
+        expect(board.board[6]).to be_all_black_pawn
+      end
     end
   end
   matcher :be_a_nil_8x8_array do
@@ -68,7 +71,7 @@ describe ChessBoard do
     end
   end
   matcher :be_all_black_pawn do
-    math do |array|
+    match do |array|
       array.all? { |piece| piece.role == 'pawn' && piece.team == 'black' }
     end
   end
