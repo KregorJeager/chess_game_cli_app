@@ -14,7 +14,7 @@ describe ChessBoard do
     it 'has @turn' do
       expect(board.turn).to eq('white')
     end
-    it '@turn has attr accesor' do
+    it '@turn is read' do
       expect { board.turn = 'black' }.to change { board.turn }.to('black')
     end
   end
