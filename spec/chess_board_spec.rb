@@ -44,6 +44,14 @@ describe ChessBoard do
   end
 
   describe '#set_board_to_default' do
+    context 'when board is set' do
+      before do
+        board.set_board_to_default
+      end
+      it 'all white pawn are in place' do
+        expect(board.board[1]).to be_all_white_pawn
+      end
+    end
   end
   matcher :be_a_nil_8x8_array do
     match do |brd|
@@ -55,7 +63,7 @@ describe ChessBoard do
     end
   end
   matcher :be_all_white_pawn do
-    math do |array|
+    match do |array|
       array.all? { |piece| piece.role == 'pawn' && piece.team == 'white' }
     end
   end
