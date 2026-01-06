@@ -3,8 +3,8 @@
 require './lib/chess_board'
 
 describe ChessBoard do
+  subject(:board) { described_class.new }
   describe 'instance variables' do
-    subject(:board) { described_class.new }
     it 'has @board' do
       expect { board.board }.not_to raise_error
     end
@@ -16,6 +16,21 @@ describe ChessBoard do
     end
     it '@turn has attr accesor' do
       expect { board.turn = 'black' }.to change { board.turn }.to('black')
+    end
+  end
+
+  describe '#initialize' do
+    matcher :be_a_nil_8x8_array do
+      match do |brd|
+        (0..7).each do |i|
+          (0..7).each do |j|
+            brd[i][j].nil?
+          end
+        end
+      end
+    end
+    it 'set @board to 8x8 2d array with all values nil' do
+      expect(board.board).to be_a_nil_8x8_array
     end
   end
 end
