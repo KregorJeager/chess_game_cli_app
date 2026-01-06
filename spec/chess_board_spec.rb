@@ -75,4 +75,14 @@ describe ChessBoard do
       array.all? { |piece| piece.role == 'pawn' && piece.team == 'black' }
     end
   end
+  matcher :be_all_white do
+    match do |array|
+      array.all? { |piece| piece.team == 'white' }
+    end
+  end
+  matcher :be_all_black do
+    match do |array|
+      array.all? { |piece| piece.team == 'black' }
+    end
+  end
 end
