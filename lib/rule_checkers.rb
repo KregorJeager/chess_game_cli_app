@@ -1,6 +1,7 @@
 # frozen_string_literal: false
 
 module RuleCheckers
-  def valid?(cur, new)
+  def pawn_valid?(cur, new)
+    [true, "moved pawn from #{cur} to #{new}"]
   end
 end
