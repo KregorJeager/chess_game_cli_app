@@ -1,7 +1,9 @@
 # frozen_string_literal: false
 
-require './lib/rule_checkers'
+require './lib/chess_board'
 
-describe RuleCheckers do
-  subject(:checkers) { Class.new { extend(RuleCheckers) } }
+describe ChessBoard do
+  describe 'RuleCheckers module' do
+    subject(:checkers) { described_class.new }
+  end
 end
