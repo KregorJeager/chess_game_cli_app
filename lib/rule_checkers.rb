@@ -2,6 +2,8 @@
 
 module RuleCheckers
   def pawn_valid?(cur, new)
-    [true, "moved pawn from #{cur} to #{new}"]
+  end
+
+  def pawn_next_moves(cur)
   end
 end

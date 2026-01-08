@@ -13,6 +13,13 @@ describe ChessBoard do
         output = [true, "moved pawn from #{current_position} to #{new_position}"]
         expect(checkers.pawn_valid?(current_position, new_position)).to eq(output)
       end
+
+      it 'only allows 1 step forward after the initial move' do
+        current_position = [2, 0]
+        new_position = [4, 0]
+        output = [false, 'Invalid move (only 1 step forward)']
+        expect(checkers.pawn_valid?(current_position, new_position)).to eq(output[0])
+      end
     end
   end
 end
