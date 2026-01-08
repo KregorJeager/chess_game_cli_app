@@ -35,13 +35,13 @@ GameRound
       #stop game and return to MainMenu or call quit
     valid?(cur,new,board)
       #uses chess_rule modules and return true if the a move is valid
+      # also returns a message
       #determine if:
         a piece is allowed to make the given moved
         if check: the moves removes checkmate status
     check_mate?
       #uses chess_rule modules and return true if there is a move that can save the king
 
-      
 
 ChessBoard
   #Will contain the board array itself
