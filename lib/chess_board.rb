@@ -1,9 +1,11 @@
 # frozen_string_literal: false
 
 require './lib/chess_piece'
+require './lib/rule_checkers'
 
 # comment
 class ChessBoard
+  include RuleCheckers
   attr_reader :board
   attr_accessor :turn
 
