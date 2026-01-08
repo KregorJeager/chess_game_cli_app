@@ -33,14 +33,6 @@ GameRound
     save
       #save ChessBoard instance to load game DIR
       #stop game and return to MainMenu or call quit
-    valid?(cur,new,board)
-      #uses chess_rule modules and return true if the a move is valid
-      # also returns a message
-      #determine if:
-        a piece is allowed to make the given moved
-        if check: the moves removes checkmate status
-    check_mate?
-      #uses chess_rule modules and return true if there is a move that can save the king
 
 
 ChessBoard
@@ -58,6 +50,26 @@ ChessBoard
       #updates an instance varialbe that keeps track on whos turn
     move_piece(new,cur)
       #moves a piece in the board
+
+    valid?(cur,new,board)
+      #uses chess_rule modules and return true if the a move is valid
+      # also returns a message
+      #determine if:
+        a piece is allowed to make the given moved
+        if check: the moves removes checkmate status
+        
+      #pseudo code
+      valid?(cur, new,board)
+        return when_player_is_check(cur,new,board) if check?
+        return valid_selector(cur,new,board)
+      end
+
+      when_player_is_check(cur, new, board)
+        board_copy = copy(board)
+        
+      end
+    check_mate?
+      #uses chess_rule modules and return true if there is a move that can save the king
 
 ChessPiece
   #create an instance of of chess pieces. 
