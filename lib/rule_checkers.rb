@@ -39,6 +39,16 @@ module RuleCheckers
   end
 
   def rook_path(cur, new)
-    nil unless cur[0] == new[0] || cur[1] == new[1]
+    # straight moves should have one common coordinate
+    return nil unless cur[0] == new[0] || cur[1] == new[1]
+
+    # determine which coordinates changes
+    axis = cur[0] == new[0] ? 1 : 0
+    path = []
+    until cur[axis] == new[axis]
+      cur[axis] += 1
+      path << [cur[0], cur[1]]
+    end
+    path
   end
 end
