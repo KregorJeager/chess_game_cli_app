@@ -78,5 +78,16 @@ describe ChessBoard do
         end
       end
     end
+
+    describe '#path_clear?' do
+      let(:path) { [[1, 2], [1, 3], [1, 4]] }
+      it 'returns true if all position except the last one is nil' do
+        expect(checkers.path_clear?(path)).to eq(true)
+      end
+      it 'returns false if one position along the way has a piece' do
+        checkers.board[1][3] = ChessPiece.new('pawn', 'white')
+        expect(checkers.path_clear?(path)).to eq(false)
+      end
+    end
   end
 end
