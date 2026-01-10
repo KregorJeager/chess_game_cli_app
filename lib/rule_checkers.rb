@@ -9,9 +9,8 @@ module RuleCheckers
     moves = [[i + 1 * polarity, j]]
     moves << [i + 1 * polarity, j - 1] if enemy?([i + 1 * polarity, j - 1], piece.team)
     moves << [i + 1 * polarity, j + 1] if enemy?([i + 1 * polarity, j + 1], piece.team)
-    if i == 1 && piece.team == 'white' || i == 6 && piece.team == 'black'
+    if (i == 1 && piece.team == 'white' || i == 6 && piece.team == 'black') && @board[i + 1 * polarity][j].nil?
       moves << [i + 2 * polarity, j]
-      return moves.include?(new)
     end
 
     moves.include?(new)
@@ -22,8 +21,5 @@ module RuleCheckers
     return false if piece.nil?
 
     piece.team != team
-  end
-
-  def pawn_next_moves(cur)
   end
 end
