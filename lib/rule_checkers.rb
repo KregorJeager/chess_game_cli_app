@@ -44,11 +44,11 @@ module RuleCheckers
 
     # determine which coordinates changes
     axis = cur[0] == new[0] ? 1 : 0
+    polarity = cur[axis] > new[axis] ? -1 : 1
     path = []
     until cur[axis] == new[axis]
-      cur[axis] += 1
+      cur[axis] += 1 * polarity
       path << [cur[0], cur[1]]
     end
-    path
   end
 end
