@@ -89,5 +89,13 @@ describe ChessBoard do
         expect(checkers.path_clear?(path)).to eq(false)
       end
     end
+    describe '#rook_path' do
+      it 'returns nil if path is invalid' do
+        # diagoal move
+        current_position = [1, 0]
+        new_position = [3, 2]
+        expect(checkers.rook_path(current_position, new_position)).to eq(nil)
+      end
+    end
   end
 end
