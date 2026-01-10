@@ -78,7 +78,11 @@ module RuleCheckers
     j_polar = cur[1] > new[1] ? -1 : 1
     k = 0
     path = []
-    path << [cur[0] + k * i_polar, cur[1] + k * j_polar] until new == [cur[0] + k * i_polar, cur[1] + k * j_polar]
+    until new == [cur[0] + k * i_polar, cur[1] + k * j_polar] || k > 7
+      k += 1
+      path << [cur[0] + k * i_polar, cur[1] + k * j_polar]
+    end
+    path
   end
 
   def invalid_diagonal?(cur, new)
@@ -89,7 +93,7 @@ module RuleCheckers
     k = 0
     loop do
       k += 1
-      return false if cur[0] + k * i_polar = new[0] && cur[1] + k * j_polar = new[1]
+      return false if cur[0] + k * i_polar == new[0] && cur[1] + k * j_polar == new[1]
       break if cur[0] + k * i_polar > 7 || (cur[0] + k * i_polar).negative? ||
                cur[1] + k * j_polar > 7 || (cur[1] + k * j_polar).negative?
     end
