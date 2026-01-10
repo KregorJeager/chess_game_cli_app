@@ -86,17 +86,31 @@ module RuleCheckers
   end
 
   def invalid_diagonal?(cur, new)
-    return true if cur[0] == new[0] || cur[1] == new[1]
+    return true if horizontal_move?(cur, new)
 
-    i_polar = cur[0] > new[0] ? -1 : 1
-    j_polar = cur[1] > new[1] ? -1 : 1
+    polars = find_diagonal_polars(cur, new)
     k = 0
-    loop do
+    until out_of_board?(cur, k, polars[0], polars[1]) || k > 7
       k += 1
-      return false if cur[0] + k * i_polar == new[0] && cur[1] + k * j_polar == new[1]
-      break if cur[0] + k * i_polar > 7 || (cur[0] + k * i_polar).negative? ||
-               cur[1] + k * j_polar > 7 || (cur[1] + k * j_polar).negative?
+      return false if diagonal_valid(cur, new, k, polars)
     end
     true
+  end
+
+  def horizontal_move?(cur, new)
+    cur[0] == new[0] || cur[1] == new[1]
+  end
+
+  def diagonal_valid(cur, new, count, polars)
+    cur[0] + count * polars[0] == new[0] && cur[1] + count * polars[1] == new[1]
+  end
+
+  def find_diagonal_polars(cur, new)
+    [cur[0] > new[0] ? -1 : 1, cur[1] > new[1] ? -1 : 1]
+  end
+
+  def out_of_board?(cur, k, i_polar, j_polar)
+    cur[0] + k * i_polar > 7 || (cur[0] + k * i_polar).negative? ||
+      cur[1] + k * j_polar > 7 || (cur[1] + k * j_polar).negative?
   end
 end
