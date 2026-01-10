@@ -98,7 +98,13 @@ describe ChessBoard do
           expect(checkers.rook_path(current_position, new_position)).to eq(nil)
         end
       end
-      it 'returns a path from cur to new excluding cur position' do
+      context 'vertical moves' do
+        it 'returns a path from cur to new excluding cur position' do
+          current_position = [4, 0]
+          new_position = [6, 0]
+          output = [[5, 0], [6, 0]]
+          expect(checkers.rook_path(current_position, new_position)).to eq(output)
+        end
       end
     end
   end
