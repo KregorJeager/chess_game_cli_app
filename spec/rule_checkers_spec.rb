@@ -129,7 +129,7 @@ describe ChessBoard do
     end
 
     describe '#bishop_path' do
-      it 'returns nil' do
+      it 'returns nil when move is invalid' do
         # horizontal move
         current_position = [0, 0]
         new_position = [3, 2]
@@ -145,6 +145,12 @@ describe ChessBoard do
         current_position = [0, 5]
         new_position = [2, 3]
         output = [[1, 4], [2, 3]]
+        expect(checkers.bishop_path(current_position, new_position)).to eq(output)
+      end
+      it 'works on diagonal ascending to the right' do
+        current_position = [6, 0]
+        new_position = [3, 3]
+        output = [[5, 1], [4, 2], [3, 3]]
         expect(checkers.bishop_path(current_position, new_position)).to eq(output)
       end
     end
