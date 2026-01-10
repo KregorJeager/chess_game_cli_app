@@ -11,6 +11,7 @@ describe ChessBoard do
         current_position = [1, 0]
         new_position = [3, 0]
         output = [true, "moved pawn from #{current_position} to #{new_position}"]
+        checkers.board[1][0] = ChessPiece.new('pawn', 'white')
         expect(checkers.pawn_valid?(current_position, new_position)).to eq(output[0])
       end
 
@@ -18,6 +19,7 @@ describe ChessBoard do
         current_position = [2, 0]
         new_position = [4, 0]
         output = [false, 'Invalid move (only 1 step forward)']
+        checkers.board[2][0] = ChessPiece.new('pawn', 'white')
         expect(checkers.pawn_valid?(current_position, new_position)).to eq(output[0])
       end
     end
