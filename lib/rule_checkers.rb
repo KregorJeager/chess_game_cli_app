@@ -22,4 +22,19 @@ module RuleCheckers
 
     piece.team != team
   end
+
+  def rook_valid?(cur, new)
+    path = rook_path(cur, new)
+    return false if path.nil? || !path_clear?(path)
+
+    piece = @board[new[0]][new[1]]
+    piece.nil? || enemy?(new, piece.team)
+  end
+
+  def path_clear?(path)
+    path.pop
+    return true if path.nil?
+
+    path.all? { |i| @board[i[0]][i[1]].nil? }
+  end
 end
