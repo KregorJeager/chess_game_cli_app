@@ -112,6 +112,35 @@ describe ChessBoard do
           expect(checkers.rook_path(current_position, new_position)).to eq(output)
         end
       end
+      context 'horizontal moves' do
+        it 'returns a path from cur to new excluding cur position' do
+          current_position = [4, 0]
+          new_position = [4, 4]
+          output = [[4, 1], [4, 2], [4, 3], [4, 4]]
+          expect(checkers.rook_path(current_position, new_position)).to eq(output)
+        end
+        it 'Can return a path moving backwards' do
+          current_position = [4, 4]
+          new_position = [4, 0]
+          output = [[4, 3], [4, 2], [4, 1], [4, 0]]
+          expect(checkers.rook_path(current_position, new_position)).to eq(output)
+        end
+      end
+    end
+
+    describe '#bishop_path' do
+      it 'returns nil' do
+        # horizontal move
+        current_position = [0, 0]
+        new_position = [3, 2]
+        expect(checkers.bishop_path(current_position, new_position)).to eq(nil)
+      end
+      it 'works on diagonal descending to the right' do
+        current_position = [0, 0]
+        new_position = [4, 4]
+        output = [[1, 1], [2, 2], [3, 3], [4, 4]]
+        expect(checkers.bishop_path(current_position, new_position)).to eq(output)
+      end
     end
   end
 end
