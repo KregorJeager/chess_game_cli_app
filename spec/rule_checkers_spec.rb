@@ -90,11 +90,15 @@ describe ChessBoard do
       end
     end
     describe '#rook_path' do
-      it 'returns nil if path is invalid' do
-        # diagoal move
-        current_position = [1, 0]
-        new_position = [3, 2]
-        expect(checkers.rook_path(current_position, new_position)).to eq(nil)
+      context 'whan path is invalid' do
+        it 'returns nil' do
+          # diagoal move
+          current_position = [1, 0]
+          new_position = [3, 2]
+          expect(checkers.rook_path(current_position, new_position)).to eq(nil)
+        end
+      end
+      it 'returns a path from cur to new excluding cur position' do
       end
     end
   end
