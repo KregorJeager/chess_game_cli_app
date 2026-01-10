@@ -37,4 +37,8 @@ module RuleCheckers
 
     path.all? { |i| @board[i[0]][i[1]].nil? }
   end
+
+  def rook_path(cur, new)
+    nil unless cur[0] == new[0] || cur[1] == new[1]
+  end
 end
