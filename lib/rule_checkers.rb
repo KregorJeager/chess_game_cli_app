@@ -62,4 +62,37 @@ module RuleCheckers
   def rook_polarity(cur, new, axis)
     cur[axis] > new[axis] ? -1 : 1
   end
+
+  def bishop_valid?(cur, new)
+    path = bishop_path(cur, new)
+    return false if path.nil? || !path_clear?(path)
+
+    piece = @board[new[0]][new[1]]
+    piece.nil? || enemy?(new, piece.team)
+  end
+
+  def bishop_path(cur, new)
+    return nil if invalid_diagonal?(cur, new)
+
+    i_polar = cur[0] > new[0] ? -1 : 1
+    j_polar = cur[1] > new[1] ? -1 : 1
+    k = 0
+    path = []
+    path << [cur[0] + k * i_polar, cur[1] + k * j_polar] until new == [cur[0] + k * i_polar, cur[1] + k * j_polar]
+  end
+
+  def invalid_diagonal?(cur, new)
+    return true if cur[0] == new[0] || cur[1] == new[1]
+
+    i_polar = cur[0] > new[0] ? -1 : 1
+    j_polar = cur[1] > new[1] ? -1 : 1
+    k = 0
+    loop do
+      k += 1
+      return false if cur[0] + k * i_polar = new[0] && cur[1] + k * j_polar = new[1]
+      break if cur[0] + k * i_polar > 7 || (cur[0] + k * i_polar).negative? ||
+               cur[1] + k * j_polar > 7 || (cur[1] + k * j_polar).negative?
+    end
+    true
+  end
 end
