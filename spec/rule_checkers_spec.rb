@@ -105,6 +105,12 @@ describe ChessBoard do
           output = [[5, 0], [6, 0]]
           expect(checkers.rook_path(current_position, new_position)).to eq(output)
         end
+        it 'Can return a path moving backwards' do
+          current_position = [6, 0]
+          new_position = [4, 0]
+          output = [[5, 0], [4, 0]]
+          expect(checkers.rook_path(current_position, new_position)).to eq(output)
+        end
       end
     end
   end
