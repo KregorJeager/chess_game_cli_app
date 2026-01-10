@@ -153,6 +153,12 @@ describe ChessBoard do
         output = [[5, 1], [4, 2], [3, 3]]
         expect(checkers.bishop_path(current_position, new_position)).to eq(output)
       end
+      it 'works on diagonal ascending to the left' do
+        current_position = [6, 6]
+        new_position = [3, 3]
+        output = [[5, 5], [4, 4], [3, 3]]
+        expect(checkers.bishop_path(current_position, new_position)).to eq(output)
+      end
     end
   end
 end
