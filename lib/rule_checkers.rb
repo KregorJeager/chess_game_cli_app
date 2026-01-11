@@ -113,4 +113,13 @@ module RuleCheckers
     cur[0] + k * i_polar > 7 || (cur[0] + k * i_polar).negative? ||
       cur[1] + k * j_polar > 7 || (cur[1] + k * j_polar).negative?
   end
+
+  def knight_valid?(cur, new)
+    path = knight_path(cur)
+    path.select! do |i|
+      piece = @board[i[0]][i[1]]
+      piece.nil? || enemy?(i, piece.team)
+    end
+    path.include?(new)
+  end
 end
