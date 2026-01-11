@@ -164,7 +164,11 @@ describe ChessBoard do
       match do |actual|
         actual.all? do |act|
           i = expected.include?(act)
-          expected.reject! { |j| j == act } if i
+          if i
+            expected.each_index do |j|
+              expected.delete_at(j) if endexpected[j] == act
+            end
+          end
           i
         end
       end
