@@ -166,7 +166,7 @@ describe ChessBoard do
           i = expected.include?(act)
           if i
             expected.each_index do |j|
-              expected.delete_at(j) if endexpected[j] == act
+              expected.delete_at(j) if expected[j] == act
             end
           end
           i
@@ -179,12 +179,12 @@ describe ChessBoard do
         it 'works with rand_pos = [0,0]' do
           rand_pos = [0, 0]
           output = [[1, 2], [2, 1]]
-          expect(checkers.knigh_path(rand_pos)).to be_equal_jumbled_arr(output)
+          expect(checkers.knight_path(rand_pos)).to be_equal_jumbled_arr(output)
         end
         it 'works with rand_pos = [4,7]' do
           rand_pos = [4, 7]
-          output = [[0, 6] [3, 5], [5, 5], [6, 6]]
-          expect(checkers.knigh_path(rand_pos)).to be_equal_jumbled_arr(output)
+          output = [[2, 6], [3, 5], [5, 5], [6, 6]]
+          expect(checkers.knight_path(rand_pos)).to be_equal_jumbled_arr(output)
         end
       end
     end
