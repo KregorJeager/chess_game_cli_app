@@ -122,4 +122,23 @@ module RuleCheckers
     end
     path.include?(new)
   end
+
+  def knight_path(cur)
+    knight_template(cur).select do |pos|
+      pos[0] < 8 && !pos[0].negative? &&
+        pos[1] < 8 && !pos[1].negative?
+    end
+    # knight_template(cur)
+  end
+
+  def knight_template(cur)
+    [[cur[0] - 2, cur[1] - 1],
+     [cur[0] - 2, cur[1] + 1],
+     [cur[0] - 1, cur[1] - 2],
+     [cur[0] - 1, cur[1] + 2],
+     [cur[0] + 2, cur[1] - 1],
+     [cur[0] + 2, cur[1] + 1],
+     [cur[0] + 1, cur[1] - 2],
+     [cur[0] + 1, cur[1] + 2]]
+  end
 end
