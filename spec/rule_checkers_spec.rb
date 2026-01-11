@@ -183,7 +183,7 @@ describe ChessBoard do
         end
         it 'works with rand_pos = [4,7]' do
           rand_pos = [4, 7]
-          output = [[1, 2], [2, 1]]
+          output = [[0, 6] [3, 5], [5, 5], [6, 6]]
           expect(checkers.knigh_path(rand_pos)).to be_equal_jumbled_arr(output)
         end
       end
