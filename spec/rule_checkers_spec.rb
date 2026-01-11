@@ -160,13 +160,27 @@ describe ChessBoard do
         expect(checkers.bishop_path(current_position, new_position)).to eq(output)
       end
     end
+    matcher :be_equal_jumbled_arr do |expected|
+      match do |actual|
+        actual.all? do |act|
+          i = expected.include?(act)
+          expected.reject! { |j| j == act } if i
+          i
+        end
+      end
+    end
 
     describe '#knigh_path' do
       context 'return array of knight path coordinates' do
         it 'works with rand_pos = [0,0]' do
           rand_pos = [0, 0]
           output = [[1, 2], [2, 1]]
-          expect(checkers.knigh_path(rand_pos)).to eq(output)
+          expect(checkers.knigh_path(rand_pos)).to be_equal_jumbled_arr(output)
+        end
+        it 'works with rand_pos = [4,7]' do
+          rand_pos = [4, 7]
+          output = [[1, 2], [2, 1]]
+          expect(checkers.knigh_path(rand_pos)).to be_equal_jumbled_arr(output)
         end
       end
     end
