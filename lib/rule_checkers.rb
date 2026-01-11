@@ -116,11 +116,15 @@ module RuleCheckers
 
   def knight_valid?(cur, new)
     path = knight_path(cur)
+    path = knight_filter_team(path)
+    path.include?(new)
+  end
+
+  def knight_filter_team(path)
     path.select! do |i|
       piece = @board[i[0]][i[1]]
       piece.nil? || enemy?(i, piece.team)
     end
-    path.include?(new)
   end
 
   def knight_path(cur)
