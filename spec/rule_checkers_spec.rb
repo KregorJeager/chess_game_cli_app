@@ -160,5 +160,15 @@ describe ChessBoard do
         expect(checkers.bishop_path(current_position, new_position)).to eq(output)
       end
     end
+
+    describe '#knigh_path' do
+      context 'return array of knight path coordinates' do
+        it 'works with rand_pos = [0,0]' do
+          rand_pos = [0, 0]
+          output = [[1, 2], [2, 1]]
+          expect(checkers.knigh_path(rand_pos)).to eq(output)
+        end
+      end
+    end
   end
 end
