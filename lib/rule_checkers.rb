@@ -1,6 +1,8 @@
 # frozen_string_literal: false
 
+require './lib/helper_modules/rook_helper'
 module RuleCheckers
+  include RookHelper
   def pawn_valid?(cur, new)
     i = cur[0]
     j = cur[1]
@@ -36,37 +38,13 @@ module RuleCheckers
 
   def rook_valid?(cur, new)
     # finds postion between cur and new. Include new in return array
+    # can be found in helper_modules/rook_helper
     path = rook_path(cur, new)
     # path_clear? checks if all item in array are nil
     return false if path.nil? || !path_clear?(path)
 
     piece = @board[new[0]][new[1]]
     piece.nil? || enemy?(new, piece.team)
-  end
-
-  def rook_path(cur, new)
-    # straight moves should have one common coordinate
-    return nil unless cur[0] == new[0] || cur[1] == new[1]
-
-    # returns 0 or 1, depends on which axis is moving | cur[axis0][axis1]
-    axis = rook_axis(cur, new)
-    # return + or - 1, depends when we need to add or subtrct from cur to
-    # reach new
-    polarity = rook_polarity(cur, new, axis)
-    path = []
-    until cur[axis] == new[axis]
-      cur[axis] += 1 * polarity
-      path << [cur[0], cur[1]]
-    end
-    path
-  end
-
-  def rook_axis(cur, new)
-    cur[0] == new[0] ? 1 : 0
-  end
-
-  def rook_polarity(cur, new, axis)
-    cur[axis] > new[axis] ? -1 : 1
   end
 
   def bishop_valid?(cur, new)
