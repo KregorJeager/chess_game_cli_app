@@ -35,7 +35,9 @@ module RuleCheckers
   end
 
   def rook_valid?(cur, new)
+    # finds postion between cur and new. Include new in return array
     path = rook_path(cur, new)
+    # path_clear? checks if all item in array are nil
     return false if path.nil? || !path_clear?(path)
 
     piece = @board[new[0]][new[1]]
