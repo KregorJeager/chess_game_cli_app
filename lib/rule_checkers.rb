@@ -82,7 +82,10 @@ module RuleCheckers
   end
 
   def king_path(cur)
-    king_template(cur)
+    king_template(cur).select do |pos|
+      pos[0] < 8 && !pos[0].negative? &&
+        pos[1] < 8 && !pos[1].negative?
+    end
   end
 
   def king_template(cur)
