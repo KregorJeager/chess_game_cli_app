@@ -78,6 +78,6 @@ class ChessBoard
 
   def pos_out_of_board(pos)
     false if pos[0].negative? || pos[0] > 7 ||
-             pos[1].negative? || pos[7] > 7
+             pos[1].negative? || pos[1] > 7
   end
 end
