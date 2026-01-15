@@ -3,7 +3,22 @@
 require 'lib/chess_board'
 # comment
 class GameRound
-  def initialize
+  def initialize(chess)
+    @chess = chess
+  end
+
+  def game_loop
+    make_move(@chess)
+    @chess.turn = @chess.turn == 'white' ? 'black' : 'white'
+  end
+
+  def make_move(board)
+    loop do
+      input = player_input
+      return @chess.move_piece(input[0], input[1]) if @chess.valid?(input[0], input[1])
+
+      puts 'Invalid input'
+    end
   end
 
   def player_input
