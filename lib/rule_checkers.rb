@@ -66,4 +66,10 @@ module RuleCheckers
     path = knight_filter_team(path)
     path.include?(new)
   end
+
+  def queen_valid?(cur, new)
+    return rook_valid?(cur, new) if horizontal_move?(cur, new)
+
+    bishop_valid?(cur, new)
+  end
 end
