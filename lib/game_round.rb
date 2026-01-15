@@ -1,6 +1,6 @@
 # frozen_string_literal: false
 
-require 'lib/chess_board'
+require './lib/chess_board'
 # comment
 class GameRound
   def initialize(chess)
@@ -31,5 +31,16 @@ class GameRound
       return [input[0].split(',').map!(&:to_i), input[1].split(',').map!(&:to_i)]
     end
     input
+  end
+
+  def print_board
+    puts '  0   1   2   3   4   5   6   7'
+    @chess.board.each_index do |i|
+      line = []
+      @chess.board[i].each do |j|
+        line << (j.nil? ? '[  ]' : "[#{j.character} ]")
+      end
+      puts "#{i}#{line.join('')}"
+    end
   end
 end
