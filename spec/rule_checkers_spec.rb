@@ -188,5 +188,13 @@ describe ChessBoard do
         end
       end
     end
+
+    describe 'king_path' do
+      it 'returns all pos aroung the king' do
+        posistion = [4, 4]
+        output = [[5, 4], [5, 5], [4, 5], [3, 5], [3, 4], [3, 3], [4, 3], [5, 3]]
+        expect(checkers.king_path(posistion)).to be_equal_jumbled_arr(output)
+      end
+    end
   end
 end
