@@ -3,6 +3,7 @@
 require './lib/helper_modules/rook_helper'
 require './lib/helper_modules/bishop_helper'
 
+# Contain methods for validating moves
 module RuleCheckers
   include RookHelper
   include BishopHelper
