@@ -195,6 +195,12 @@ describe ChessBoard do
         output = [[5, 4], [5, 5], [4, 5], [3, 5], [3, 4], [3, 3], [4, 3], [5, 3]]
         expect(checkers.king_path(posistion)).to be_equal_jumbled_arr(output)
       end
+
+      it 'does not return positions outside of board' do
+        position = [0, 0]
+        output = [[0, 1], [1, 1], [1, 0]]
+        expect(checkers.king_path(position)).to be_equal_jumbled_arr(output)
+      end
     end
   end
 end
