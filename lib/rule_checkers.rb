@@ -62,8 +62,9 @@ module RuleCheckers
   end
 
   def knight_valid?(cur, new)
+    cur_team = @board[cur[0]][cur[1]].team
     path = knight_path(cur)
-    path = knight_filter_team(path)
+    path = knight_filter_team(path, cur_team)
     path.include?(new)
   end
 
@@ -71,5 +72,8 @@ module RuleCheckers
     return rook_valid?(cur, new) if horizontal_move?(cur, new)
 
     bishop_valid?(cur, new)
+  end
+
+  def king_valid?(cur, new)
   end
 end

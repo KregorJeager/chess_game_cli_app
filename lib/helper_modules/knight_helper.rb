@@ -2,10 +2,10 @@
 
 # Contains sub methods for knight_valid?
 module KnightHelper
-  def knight_filter_team(path)
+  def knight_filter_team(path, team)
     path.select! do |i|
       piece = @board[i[0]][i[1]]
-      piece.nil? || enemy?(i, piece.team)
+      piece.nil? || enemy?(i, team)
     end
   end
 
