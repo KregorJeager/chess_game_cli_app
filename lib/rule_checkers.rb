@@ -2,11 +2,13 @@
 
 require './lib/helper_modules/rook_helper'
 require './lib/helper_modules/bishop_helper'
+require './lib/helper_modules/knight_helper'
 
 # Contain methods for validating moves
 module RuleCheckers
   include RookHelper
   include BishopHelper
+  include KnightHelper
   def pawn_valid?(cur, new)
     i = cur[0]
     j = cur[1]
@@ -63,31 +65,5 @@ module RuleCheckers
     path = knight_path(cur)
     path = knight_filter_team(path)
     path.include?(new)
-  end
-
-  def knight_filter_team(path)
-    path.select! do |i|
-      piece = @board[i[0]][i[1]]
-      piece.nil? || enemy?(i, piece.team)
-    end
-  end
-
-  def knight_path(cur)
-    knight_template(cur).select do |pos|
-      pos[0] < 8 && !pos[0].negative? &&
-        pos[1] < 8 && !pos[1].negative?
-    end
-    # knight_template(cur)
-  end
-
-  def knight_template(cur)
-    [[cur[0] - 2, cur[1] - 1],
-     [cur[0] - 2, cur[1] + 1],
-     [cur[0] - 1, cur[1] - 2],
-     [cur[0] - 1, cur[1] + 2],
-     [cur[0] + 2, cur[1] - 1],
-     [cur[0] + 2, cur[1] + 1],
-     [cur[0] + 1, cur[1] - 2],
-     [cur[0] + 1, cur[1] + 2]]
   end
 end
