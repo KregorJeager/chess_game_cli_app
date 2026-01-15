@@ -24,6 +24,13 @@ module RuleCheckers
     moves.include?(new)
   end
 
+  def filter_team(path, team)
+    path.select! do |i|
+      piece = @board[i[0]][i[1]]
+      piece.nil? || enemy?(i, team)
+    end
+  end
+
   def enemy?(pos, team)
     piece = @board[pos[0]][pos[1]]
     return false if piece.nil?
