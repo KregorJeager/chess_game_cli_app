@@ -75,5 +75,22 @@ module RuleCheckers
   end
 
   def king_valid?(cur, new)
+    cur_team = @board[cur[0]][cur[1]].team
+    path = king_path(cur)
+    path = king_filter(path, cur_team)
+    path.include?(new)
+  end
+
+  def king_path(cur)
+    king_template(cur)
+  end
+
+  def king_template(cur)
+    i = cur[0]
+    j = cur[1]
+
+    [[i - 1, j - 1], [i - 1, j], [i - 1, j + 1],
+     [i, j - 1], [i, j + 1],
+     [i + 1, j - 1], [i + 1, j], [i + 1, j + 1]]
   end
 end
