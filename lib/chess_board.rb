@@ -51,4 +51,24 @@ class ChessBoard
     @board[7][3] = ChessPiece.new('king', 'black')
     @board[7][4] = ChessPiece.new('queen', 'black')
   end
+
+  def valid?(cur, new)
+    return false if move_not_valid(cur, new)
+
+    role = @board[cur[0]][cur[1]]
+    case role
+    when 'pawn'
+      pawn_valid?(cur, new)
+    when 'rook'
+      rook_valid?(cur, new)
+    when 'knight'
+      knight_valid?(cur, new)
+    when 'bishop'
+      bishop_valid?(cur, new)
+    when 'queen'
+      queen_valid?(cur, new)
+    when 'king'
+      king_valid?(cur, new)
+    end
+  end
 end
