@@ -53,7 +53,7 @@ class ChessBoard
   end
 
   def valid?(cur, new)
-    return false if move_not_valid(cur, new)
+    return false if out_of_board(cur, new)
 
     role = @board[cur[0]][cur[1]]
     case role
@@ -70,5 +70,14 @@ class ChessBoard
     when 'king'
       king_valid?(cur, new)
     end
+  end
+
+  def out_of_board(cur, new)
+    false if pos_out_of_board(cur) || pos_out_of_board(new)
+  end
+
+  def pos_out_of_board(pos)
+    false if pos[0].negative? || pos[0] > 7 ||
+             pos[1].negative? || pos[7] > 7
   end
 end
